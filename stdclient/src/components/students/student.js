@@ -63,6 +63,7 @@ class Student extends Component {
                     <td>{student.email}</td>
                     <td>{student.address}</td>
                     <td>{student.GPA}</td>
+                    
                 </tr>)}
 
             </tbody>
