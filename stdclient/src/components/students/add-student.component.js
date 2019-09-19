@@ -82,7 +82,7 @@ onSubmit(e){
     //   };
     console.log("Adding User");
     console.log(std);
-    axios.post('http://localhost:5000/student/add', std)
+    axios.post('/student/add', std)
         .then(res => console.log(res.data));
     // window.location='/';
 
