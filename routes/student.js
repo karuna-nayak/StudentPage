@@ -45,7 +45,7 @@ Router.post('/add',(req, res)=>{
 // Router.route('/add').post((req, res)=>{
     var std = req.body;
     console.log(std)
-    mysqlConnection.query("INSERT INTO mystudent.student(studentid, firstname, lastname, email, address, GPA) VALUES(?,?,?,?,?,?)",
+    mysqlConnection.query("INSERT INTO student(studentid, firstname, lastname, email, address, GPA) VALUES(?,?,?,?,?,?)",
     [Number(std.studentid), std.firstname.toString(), std.lastname.toString(), std.email.toString(), std.address.toString(), parseFloat(std.GPA)],(err, rows, fields) => {
         if (!err)
             res.send("Student insterted successfully");
@@ -53,6 +53,7 @@ Router.post('/add',(req, res)=>{
         else
             console.log(err);
         })
+
 });
 
 // update  student
