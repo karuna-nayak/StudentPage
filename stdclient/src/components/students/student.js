@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './student.css';
-import { CardList } from './card-list';
+// import { CardList } from './card-list';
 
 
 
