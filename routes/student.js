@@ -17,6 +17,7 @@ Router.get('/',(req,res)=>{
 
 // get studnet based on id
 Router.get('/:id', (req, res)=>{
+    console.log("getting id");
     mysqlConnection.query("SELECT * FROM student WHERE studentid = ?",[req.params.id],(err, rows, fields) => {
         if (!err)
             res.send(rows);
@@ -40,13 +41,15 @@ Router.delete('/:id', (req, res)=>{
 });
 
 // insert new student
-Router.route('/add').post((req, res)=>{
+Router.post('/add',(req, res)=>{
+// Router.route('/add').post((req, res)=>{
     var std = req.body;
+    console.log(std)
     mysqlConnection.query("INSERT INTO student VALUES(?,?,?,?,?,?)",
     [std.studentid, std.firstname, std.lastname, std.email, std.address, std.GPA],(err, rows, fields) => {
         if (!err)
-            // res.send("Student insterted successfully");
-            res.send(rows);
+            res.send("Student insterted successfully");
+            // res.send(rows);
         else
             console.log(err);
         })

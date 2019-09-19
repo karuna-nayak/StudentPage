@@ -74,15 +74,15 @@ onSubmit(e){
         GPA: this.state.GPA
     }
 
-    let axiosConfig = {
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
-        }
-      };
+    // let axiosConfig = {
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=UTF-8',
+    //         "Access-Control-Allow-Origin": "*",
+    //     }
+    //   };
     console.log("Adding User");
     console.log(std);
-    axios.post('http://localhost:5000/add', std, axiosConfig)
+    axios.post('http://localhost:5000/student/add', std)
         .then(res => console.log(res.data));
     // window.location='/';
 

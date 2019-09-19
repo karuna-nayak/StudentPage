@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import './student.css';
+// import './student.css';
 import { CardList } from './card-list';
+
+
+
 
 class Student extends Component {
     constructor(){
@@ -16,10 +19,14 @@ class Student extends Component {
         .then(res => res.json())
         .then(students => this.setState({students}, ()=>console.log("students fetched", students)));
     }
+
+    
   render() {
     const { students, searchfield } = this.state;
     const filteredStudents = students.filter(student =>
         student.firstname.toLowerCase().includes(searchfield.toLowerCase())
+        || student.studentid.toString().includes(searchfield) 
+        || student.lastname.toLowerCase().includes(searchfield.toLowerCase())
         // student.studentid.includes(searchfield)
     );
     return (
@@ -35,13 +42,34 @@ class Student extends Component {
                 />
                 
             </label>
-            {/* <CardList students={filteredStudents}/>  */}
-            {filteredStudents.map(students => (
-                    <h1 key={ students.studentid }> { students.firstname }{ students.lastname } {students.email} </h1>
-          ))}
-                
-            {/* </CardList> */}
-            
+            <table className="table table-striped">
+            <thead className="thead-light">
+            <tr>
+              <th>studentid</th>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Enail</th>
+              <th>Address</th>
+              <th>GPA</th>
+            </tr>
+            </thead>
+            <tbody>
+                {/* {this.studentlist()} */}
+                {filteredStudents.map(student =>
+                <tr key={student.studentid}>
+                    <td>{student.studentid}</td>
+                    <td>{student.firstname}</td>
+                    <td>{student.lastname}</td>
+                    <td>{student.email}</td>
+                    <td>{student.address}</td>
+                    <td>{student.GPA}</td>
+                </tr>)}
+
+            </tbody>
+            </table>
+            {/* {filteredStudents.map(student => 
+          <h2 key={student.studentid}>{student.firstname} {student.lastname}</h2> */}
+        {/* )} */}
         </div>
     );
   }  
