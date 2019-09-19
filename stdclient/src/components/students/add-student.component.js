@@ -84,7 +84,7 @@ onSubmit(e){
     console.log(std);
     axios.post('/student/add', std)
         .then(res => console.log(res.data));
-    // window.location='/';
+    window.location='/';
 
 }
 
